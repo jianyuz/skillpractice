@@ -1,0 +1,18 @@
+// Title: Reverse Integer
+            // Difficulty: Medium
+            // Language: Python3
+            // Link: https://leetcode.com/problems/reverse-integer/
+
+        #digits are currently stored from high to low
+        #res = 0
+        #for digit in digits:
+        #    res = res * 10
+        #    res += digit
+            #print("res " + str(res))
+        
+        if is_negative == 1 :
+            res = -1 * res
+
+        if res < min_32bit or res > max_32bit :
+            return 0
+        return res
