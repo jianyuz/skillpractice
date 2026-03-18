@@ -4,6 +4,32 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+    def removeNthFromEnd_oneround(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        #keep two pointers, they spanned over n nodes
+        dummy = ListNode(-1)
+        dummy.next = head
+
+        pt1 = pt2 = dummy
+
+        i = 0 
+        #walk n step
+        while i < n and pt2:
+            pt2 = pt2.next
+            i += 1
+
+        #not long enough
+        if i < n -1:
+            return None
+
+        while pt2.next:
+            pt2 = pt2.next
+            pt1 = pt1.next
+        
+        # remove p1's next
+        tmp = pt1.next
+        pt1.next = tmp.next
+
+        return dummy.next
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
         # use two pointers.
         # need to know the length of the list.
