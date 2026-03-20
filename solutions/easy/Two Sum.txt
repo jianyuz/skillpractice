@@ -1,22 +1,17 @@
-// Title: Two Sum
-            // Difficulty: Easy
-            // Language: Python3
-            // Link: https://leetcode.com/problems/two-sum/
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        #create a map of compliment.
+        #key is complement, and value is the index
+        #2:1 for example
+        #iterate through the array,
+        #find find the key, out put current index and the value
+        #from the hashmap
 
-        for i, item in enumerate(nums):
-        comp_index = {}
-            comp_index[target-item] = i
-        print(comp_index)
+        comp_index = {}
+        for i, item in enumerate(nums):
+            comp_index[target-item] = i
+        print(comp_index)
 
-        for i, item in enumerate(nums):
-            if item in comp_index and i != comp_index[item]:
-
-        #from the hashmap
-        #find find the key, out put current index and the value
-        #iterate through the array,
-        #2:1 for example
-                return [i, comp_index[item]]
-
-
-
-        
+        for i, item in enumerate(nums):
+            if item in comp_index and i != comp_index[item]: # check dict existence and can't use one element multiple time.
+                return [i, comp_index[item]]
