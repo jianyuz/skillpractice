@@ -1,0 +1,22 @@
+// Title: Two Sum
+            // Difficulty: Easy
+            // Language: Python3
+            // Link: https://leetcode.com/problems/two-sum/
+
+        for i, item in enumerate(nums):
+        comp_index = {}
+            comp_index[target-item] = i
+        print(comp_index)
+
+        for i, item in enumerate(nums):
+            if item in comp_index and i != comp_index[item]:
+
+        #from the hashmap
+        #find find the key, out put current index and the value
+        #iterate through the array,
+        #2:1 for example
+                return [i, comp_index[item]]
+
+
+
+        
