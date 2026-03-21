@@ -60,3 +60,27 @@ def lengthOfLongestSubstring(self, s: str) -> int:
                 max_len += 1
             seen.add(c)
         return max_len
+def lengthOfLongestSubstring(self, s: str) -> int:
+        if len(s) == 0:
+            return 0
+        i = j = 0
+        #sliding window
+        #grow right until see duplicate
+        #shrink left until over the duplicate
+        seen = set(s[0])
+        max_len = 1
+        while j < len(s) -1:
+            j += 1
+            if s[j] in seen:
+                if max_len < j -i:
+                    max_len = j - i
+                while i < j and s[i] != s[j]:
+                    seen.remove(s[i])
+                    i += 1
+                i += 1
+            seen.add(s[j])
+        
+        if max_len < j -i +1:
+            max_len = j - i +1
+        
+        return max_len
