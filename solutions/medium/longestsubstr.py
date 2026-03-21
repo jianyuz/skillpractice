@@ -30,4 +30,33 @@ def lengthOfLongestSubstring(self, s: str) -> int:
         if cur_len > max_len:
             max_len = cur_len
         return max_len
-  
+
+
+def lengthOfLongestSubstring(self, s: str) -> int:
+        if len(s) == 0:
+            return 0
+        #max running substring without repeating is 26
+        #for each position in Str
+        #grab maximumly 26 char.
+        #check for duplicate among the 26
+
+        max_len = 1
+        #upper case, lower case + digits
+        for i in range(len(s)):
+            end = min(i + 256, len(s))
+            sub_str = s[i: end]
+            part_max = self.part_max_len(sub_str)
+            if part_max > max_len:
+                max_len = part_max
+        return max_len
+    
+    def part_max_len(self, sub_str: str) -> int:
+        seen = set()
+        max_len = 0
+        for c in sub_str:
+            if c in seen:
+                return max_len
+            else:
+                max_len += 1
+            seen.add(c)
+        return max_len
