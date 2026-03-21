@@ -84,3 +84,25 @@ def lengthOfLongestSubstring(self, s: str) -> int:
             max_len = j - i +1
         
         return max_len
+
+class Solution: #best
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if len(s) == 0:
+            return 0
+        i = j = 0
+        #sliding window
+        #grow right until see duplicate
+        #shrink left until over the duplicate
+        seen = set()
+        max_len = 1
+        while j < len(s):
+            while s[j] in seen:
+                seen.remove(s[i])
+                i += 1
+            seen.add(s[j])
+            max_len = max(max_len, j-i +1)
+            j += 1
+        return max_len
+        
+
+
