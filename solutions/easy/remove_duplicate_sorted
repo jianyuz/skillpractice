@@ -1,0 +1,20 @@
+#26
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        #keep two pointers i, j
+        #while nums[i] >= nums[j] and j< lengh of the array
+        #increment j
+        # nums[i+1] = nums[j]
+        # i = i +1 
+        i = j = 0 
+        while i < len(nums) and j < len(nums):
+            while nums[i] >= nums[j]:
+                j += 1
+                if j >= len(nums):
+                    return i + 1
+            #swap
+            temp = nums[i+1]
+            nums[i+1] = nums[j]
+            nums[j] = temp
+            i += 1
+        return i +1
