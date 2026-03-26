@@ -3,21 +3,27 @@
             // Language: Python3
             // Link: https://leetcode.com/problems/palindrome-number/
 
-            x = x//10
-            digit = x % 10
-            digits.append(digit)
-        print(digits)
-        
-        for i in range(num_digits//2):
-        num_digits = len(digits)
-        while x%10 > 0 or x//10>0:
-        digits = []
-        #x is positive
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        if x < 0 : 
+            return False
+        if x == 0:
+            return True
 
-            return True
-        if x == 0:
-            return False
-        if x < 0 : 
-    def isPalindrome(self, x: int) -> bool:
-class Solution:
-            if digits[i] != digits[num_digits - i -1]:
+        #x is positive
+        digits = []
+        while x%10 > 0 or x//10>0:
+            digit = x % 10
+            x = x//10
+            digits.append(digit)
+        print(digits)
+        
+        num_digits = len(digits)
+        for i in range(num_digits//2):
+            if digits[i] != digits[num_digits - i -1]:
+                return False
+        return True
+
+
+
+        
