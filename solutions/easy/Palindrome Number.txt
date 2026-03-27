@@ -3,27 +3,20 @@
             // Language: Python3
             // Link: https://leetcode.com/problems/palindrome-number/
 
-class Solution:
-    def isPalindrome(self, x: int) -> bool:
-        if x < 0 : 
-            return False
-        if x == 0:
-            return True
-
-        #x is positive
-        digits = []
-        while x%10 > 0 or x//10>0:
-            digit = x % 10
-            x = x//10
-            digits.append(digit)
-        print(digits)
-        
-        num_digits = len(digits)
-        for i in range(num_digits//2):
-            if digits[i] != digits[num_digits - i -1]:
-                return False
-        return True
+            return False
+        if x == 0:
+            return True
+        #half number build up in reverse way
+        half_num = 0
+        while half_num < x:
+            half_num = half_num * 10 + x %10
+            x = x //10
+        return (x == half_num) or (x == half_num //10) 
+       
 
 
 
-        
+        if x < 0 or (x %10 == 0 and x//10 !=0): 
+    def isPalindrome(self, x: int) -> bool:
+class Solution:
+        print(f"x = {x} and half_num = {half_num}")
