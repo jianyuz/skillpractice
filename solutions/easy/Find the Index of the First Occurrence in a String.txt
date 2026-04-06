@@ -1,0 +1,21 @@
+// Title: Find the Index of the First Occurrence in a String
+            // Difficulty: Easy
+            // Language: Python3
+            // Link: https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/
+
+                    n_index += 1
+                    
+                #print(f"index={index}, n_index={n_index}")
+                if n_index == len(needle) and index <= len
+(haystack):
+                    return ret
+                else:
+                    #reset ret index
+                    ret = -1
+                    n_index = 0
+                        index = rc_index
+            else:
+                index += 1
+        return ret
+                    index += 1
+                    if rc_index != -1:
