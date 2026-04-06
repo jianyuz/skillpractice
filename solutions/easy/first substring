@@ -1,0 +1,37 @@
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        #find first place start with first letter of needle.
+        #compre letter by letter to its full length.
+        # then next first letter of needle. repeat
+
+        fc = needle[0]
+        index = 0
+        n_index = 0
+        ret = -1
+        while index < len(haystack):
+            c = haystack[index]
+            if c == fc:
+                ret = index
+                index += 1
+                n_index += 1
+                rc_index = -1 # retrace
+                while index < len(haystack) and n_index < len(needle) and haystack[index] == needle[n_index]:
+                    if fc == haystack[index] and rc_index == -1:
+                        rc_index = index
+                    index += 1
+                    n_index += 1
+                    
+                #print(f"index={index}, n_index={n_index}")
+                if n_index == len(needle) and index <= len(haystack):
+                    return ret
+                else:
+                    #reset ret index
+                    ret = -1
+                    n_index = 0
+                    if rc_index != -1:
+                        index = rc_index
+            else:
+                index += 1
+        return ret
+                
+                
