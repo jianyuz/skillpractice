@@ -1,4 +1,33 @@
 class Solution:
+ #O(n+M)
+ def strStr(self, haystack: str, needle: str) -> int:
+        #how do I preprocess it KMP, reuse previous match
+        if not needle:
+            return -1
+        
+        #build prefix
+        prefix = [0] * len(needle)
+        j = 0 #matched prefix
+        for i in range(1, len(needle)):
+            #mismatch
+            while j>0 and needle[j] != needle[i]:
+                j = prefix[j-1]
+            if needle[j] == needle[i]:
+                j += 1
+            prefix[i] = j
+        
+        j = 0 # index for needle
+        # i index for haystack
+        for i in range(len(haystack)):
+            while j> 0 and haystack[i] != needle[j]:
+                j = prefix[j-1]
+            if haystack[i] == needle[j]:
+                j += 1
+            #reach to the end
+            if j == len(needle):
+                return i - j + 1
+        return -1
+
     def strStr(self, haystack: str, needle: str) -> int:
         #find first place start with first letter of needle.
         #compre letter by letter to its full length.
