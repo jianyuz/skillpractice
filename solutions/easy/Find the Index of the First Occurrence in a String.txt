@@ -3,19 +3,20 @@
             // Language: Python3
             // Link: https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/
 
-                    n_index += 1
-                    
-                #print(f"index={index}, n_index={n_index}")
-                if n_index == len(needle) and index <= len
-(haystack):
-                    return ret
-                else:
-                    #reset ret index
-                    ret = -1
-                    n_index = 0
-                        index = rc_index
-            else:
-                index += 1
-        return ret
-                    index += 1
-                    if rc_index != -1:
+                j += 1
+            prefix[i] = j
+            if needle[j] == needle[i]:
+                j = prefix[j-1]
+            while j>0 and needle[j] != needle[i]:
+            #mismatch
+        
+        j = 0 # index for needle
+        # i index for haystack
+        for i in range(len(haystack)):
+            while j> 0 and haystack[i] != needle[j]:
+                j = prefix[j-1]
+            if haystack[i] == needle[j]:
+                j += 1
+            #reach to the end
+            if j == len(needle):
+                return i - j + 1
