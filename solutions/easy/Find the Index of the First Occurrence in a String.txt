@@ -3,20 +3,19 @@
             // Language: Python3
             // Link: https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/
 
-                j += 1
-            prefix[i] = j
-            if needle[j] == needle[i]:
-                j = prefix[j-1]
-            while j>0 and needle[j] != needle[i]:
-            #mismatch
-        
-        j = 0 # index for needle
-        # i index for haystack
-        for i in range(len(haystack)):
-            while j> 0 and haystack[i] != needle[j]:
-                j = prefix[j-1]
-            if haystack[i] == needle[j]:
-                j += 1
-            #reach to the end
-            if j == len(needle):
-                return i - j + 1
+        # helper: convert char to int
+
+        high_base = pow(base, m - 1, mod)
+        # compute base^(m-1) % mod
+
+        mod = 10**9 + 7     # large prime to avoid overflow
+        base = 256          # number of possible characters
+
+        n, m = len(haystack), len(needle)
+        if m > n:
+            return -1
+
+            return 0
+        if needle == "":
+    def strStr(self, haystack: str, needle: str) -> int:
+class Solution:
