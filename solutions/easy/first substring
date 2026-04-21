@@ -1,4 +1,47 @@
 class Solution:
+ #rolling hash
+ def strStr(self, haystack: str, needle: str) -> int:
+        if needle == "":
+            return 0
+
+        m, n = len(haystack), len(needle)
+        if n > m:
+            return -1
+
+        base = 256          # number of possible characters
+        mod = 10**9 + 7     # large prime to avoid overflow
+
+        # compute base^(m-1) % mod
+        high_base = pow(base, n - 1, mod)
+
+        # helper: convert char to int
+        def char_code(c):
+            return ord(c)
+
+        # initial hash for needle and first window
+        needle_hash = 0
+        window_hash = 0
+
+        for i in range(n):
+            needle_hash = (needle_hash * base + char_code(needle[i])) % mod
+            window_hash = (window_hash * base + char_code(haystack[i])) % mod
+
+        # slide over haystack
+        for i in range(m - n + 1):
+            if needle_hash == window_hash:
+                # double-check to avoid hash collision
+                if haystack[i:i+n] == needle:
+                    return i
+
+            # update rolling hash
+            if i + n < m:
+                window_hash = (
+                    window_hash
+                    - char_code(haystack[i]) * high_base
+                ) * base + char_code(haystack[i + n])
+                window_hash %= mod
+
+        return -1
  #O(n+M)
  def strStr(self, haystack: str, needle: str) -> int:
         #how do I preprocess it KMP, reuse previous match
