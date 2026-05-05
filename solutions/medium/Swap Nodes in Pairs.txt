@@ -1,0 +1,17 @@
+// Title: Swap Nodes in Pairs
+            // Difficulty: Medium
+            // Language: Python3
+            // Link: https://leetcode.com/problems/swap-nodes-in-pairs/
+
+                p1.next = tmp
+                iter.next = p2
+            
+            if p1:
+                iter = iter.next
+            if p2:
+                iter = iter.next
+            if not p1 and not p2:
+        return dummy.next
+
+                iter = iter.next
+
