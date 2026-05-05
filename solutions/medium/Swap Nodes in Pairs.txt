@@ -3,15 +3,37 @@
             // Language: Python3
             // Link: https://leetcode.com/problems/swap-nodes-in-pairs/
 
-                p1.next = tmp
-                iter.next = p2
-            
-            if p1:
-                iter = iter.next
-            if p2:
-                iter = iter.next
-            if not p1 and not p2:
-        return dummy.next
+          # Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(0)
+        dummy.next = head
 
-                iter = iter.next
+        iter = dummy
+        while iter:
+            p1 = None
+            p2 = None
+            if iter and iter.next:
+                p1 = iter.next
+            if p1 and p1.next:
+                p2 = p1.next
+
+            tmp = None
+            if p1 and p2:
+                tmp = p2.next
+                p2.next = p1
+                p1.next = tmp
+                iter.next = p2
+            
+            if p1:
+                iter = iter.next
+            if p2:
+                iter = iter.next
+            if not p1 and not p2:
+                iter = iter.next
+        return dummy.next
 
